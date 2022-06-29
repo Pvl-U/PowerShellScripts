@@ -1,17 +1,32 @@
 ﻿# Password Generator
-$PassLength = Read-Host 'Длина пароля (1-128)'
+# Требования к паролю: должен содержать 3 комбинации букв и цифр
+$PassLength = Read-Host 'Длина пароля (5-128)'
 $PassNumber = Read-Host 'Количество паролей'
 
-$PassLengthSplit1 = [int]($PassLength/3)
-$PassLengthSplit2 = [int]($PassLength/3)
-$PassLengthSplit3 = $PassLength - $PassLengthSplit1 - $PassLengthSplit2
+#$PassLength=5
+
+# разбиваем длинну пароля на 3 части и сохраняем в массив
+$PassLengthSplit = @()
+$PassLengthSplit += [int]($PassLength/3)
+$PassLengthSplit += $PassLengthSplit[0]
+$PassLengthSplit += ($PassLength-$PassLengthSplit[0]-$PassLengthSplit[1])
+
+# наборы символов, которые обязательно будут использованы в генерации пароля сохраняем в массив
+$char=@()
+$char += 'abcdefghijkmnopqrstuvwxyz'
+$char += $char[0].ToUpper()
+$char += '123456789'
 
 1..$PassNumber | ForEach-Object -process {
-        $PassResult = -join (1..$PassLengthSplit1 | % { [char[]]'abcdefghijklmnopqrstuvwxyz' | Get-Random })
-        $PassResult = $PassResult + (-join (1..$PassLengthSplit2 | % { [char[]]'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | Get-Random }))
-        $PassResult = $PassResult + (-join (1..$PassLengthSplit3 | % { [char[]]'0123456789' | Get-Random }))
-        #$PassResult = get-random -count $PassLength -input $PassResult | % -begin { $pass = $null } -process {$pass += $_} -end {$pass}
-        
-        $PassResult 
-        }
+$Random = @()
+for ( $index = 0; $index -lt $PassLengthSplit.Count; $index++ )
+{
+#$Random = randomchar $PassLengthSplit[$index] $char[$index]
+$Random += (1..$PassLengthSplit[$index] | % {[char[]]$char[$index] | Get-Random})
+}
+#$passw = $Random | sort {Get-Random}
+#$passw -join ''
+($Random | sort {Get-Random}) -join ''
+
+}
 #Pause

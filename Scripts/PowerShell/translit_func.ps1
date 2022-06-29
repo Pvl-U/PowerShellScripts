@@ -79,5 +79,4 @@ function Translit ([string]$inString)
         }
     return $TranslitText
 }
-# Проверяем
-Translit Хабрахабр   #Вывод: Habrahabr
+# Проверяем: Translit Хабрахабр   #Вывод: Habrahabr
