@@ -15,8 +15,8 @@ Add-Content -Path $Logfile -Value "Last Error:"
 $Error >> $Logfile
 
 # Send Email
-#$userName = 'noreply@languagelink.ru'
+#$userName = 'noreply@domain.ru'
 #$password = 'password'
 #[SecureString]$securepassword = $password | ConvertTo-SecureString -AsPlainText -Force 
 #$credential = New-Object System.Management.Automation.PSCredential -ArgumentList $username, $securepassword
-#Send-MailMessage -SmtpServer oxford -Port 587 -UseSsl -From noreply@languagelink.ru -To softmaster@languagelink.ru -Subject 'Accounts have been disabled'  -Attachments 'C:\script\disable_users.log' -Body 'Some accounts have been disabled from list in file disable_users.txt' -Credential $credential
+#Send-MailMessage -SmtpServer oxford -Port 587 -UseSsl -From noreply@domain.ru -To softmaster@domain.ru -Subject 'Accounts have been disabled'  -Attachments 'C:\script\disable_users.log' -Body 'Some accounts have been disabled from list in file disable_users.txt' -Credential $credential
