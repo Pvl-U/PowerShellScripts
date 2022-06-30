@@ -3,6 +3,8 @@
 $PassLength = Read-Host 'Длина пароля (5-128)'
 $PassNumber = Read-Host 'Количество паролей'
 
+# Для использования в составе другого скрипта, нужно закоментировать строки 3,4,21,32. 
+# И раскоменитовать строку ниже.
 #$PassLength=5
 
 # разбиваем длинну пароля на 3 части и сохраняем в массив
@@ -29,4 +31,4 @@ $Random += (1..$PassLengthSplit[$index] | % {[char[]]$char[$index] | Get-Random}
 ($Random | sort {Get-Random}) -join ''
 
 }
-#Pause
+Pause
