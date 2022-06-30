@@ -5,3 +5,5 @@ CSV файл с новыми пользователями должны содеражать следующие поля:
 DisplayName;FullName;company;department;City;Description
 
 поле FullName -  должен быть в формате Фамилия Имя на латинском, например, Ivanov Ivan
+
+CSV должен быть в UTF8 кодировке (доработать)
